@@ -1,4 +1,4 @@
-import 'package:cpe231_nsfw_flutter/src/authentication/login.dart';
+import 'package:cpe231_nsfw_flutter/src/authentication/login_page.dart';
 import 'package:cpe231_nsfw_flutter/src/main/main_wrapper.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +10,7 @@ class AuthenticationWrapper extends StatefulWidget {
 }
 
 class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
-  final isLogged = false;
+  final isLogged = true;
   final loginPage = 'Customer';
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class _AuthenticationWrapperState extends State<AuthenticationWrapper> {
       case true:
         return MainWrapper();
       default:
-        return Login();
+        return LoginPage();
     }
   }
 }

@@ -1,3 +1,4 @@
+import 'package:cpe231_nsfw_flutter/constants.dart';
 import 'package:cpe231_nsfw_flutter/src/authentication/components/login_form_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +35,7 @@ class _LoginFormViewState extends State<LoginFormView> {
               validator: controller.validateEmail,
             ),
             SizedBox(
-              height: _size.height * 0.02,
+              height: kDefaultPadding,
             ),
             TextFormField(
               controller: controller.password,
@@ -62,7 +63,7 @@ class _LoginFormViewState extends State<LoginFormView> {
               validator: controller.validatePassword,
             ),
             SizedBox(
-              height: _size.height * 0.02,
+              height: kDefaultPadding,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,

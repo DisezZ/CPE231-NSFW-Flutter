@@ -2,14 +2,14 @@ import 'package:cpe231_nsfw_flutter/src/authentication/components/login_form_vie
 import 'package:cpe231_nsfw_flutter/src/layout/layout_authentication.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginPageState extends State<LoginPage> {
   final role = 'Manager';
   @override
   Widget build(BuildContext context) {

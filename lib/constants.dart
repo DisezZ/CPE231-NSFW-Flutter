@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+final kDefaultPadding = 20.0;
+
 final kBrightness = Brightness.light;
 final kPrimary = Color(0xFF0D47A1);
 final kOnPrimary = Color(0xFFE0E1E1);

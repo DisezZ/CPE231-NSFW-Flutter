@@ -13,7 +13,7 @@ class MainWrapper extends StatefulWidget {
 }
 
 class _MainWrapperState extends State<MainWrapper> {
-  final role = 'Manager';
+  final role = 'Customer';
   @override
   Widget build(BuildContext context) {
     switch (role) {
