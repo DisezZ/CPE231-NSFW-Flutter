@@ -11,7 +11,7 @@ class _SideMenuItemState extends State<SideMenuItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+      child: Text('ITEM'),
     );
   }
 }

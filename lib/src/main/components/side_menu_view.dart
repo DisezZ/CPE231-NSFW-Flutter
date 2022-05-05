@@ -17,6 +17,7 @@ class _SideMenuViewState extends State<SideMenuView> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Theme.of(context).canvasColor,
       height: double.infinity,
       padding: EdgeInsets.only(top: kIsWeb ? kDefaultPadding : 0),
       child: SafeArea(

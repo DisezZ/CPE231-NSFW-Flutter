@@ -73,6 +73,8 @@ class MyApp extends StatelessWidget {
             ),
             buttonTheme: ButtonThemeData(colorScheme: _customColorScheme()),
             cardTheme: CardTheme(color: kBackground),
+            bottomNavigationBarTheme:
+                BottomNavigationBarThemeData(selectedItemColor: kPrimary),
           ),
           darkTheme: ThemeData.dark(),
           themeMode: settingsController.themeMode,
