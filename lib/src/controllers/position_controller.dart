@@ -10,7 +10,8 @@ class PositionController extends GetxController {
     Position(positionId: 3, positionName: 'Customer')
   ];
 
-  get items => [..._items];
+  get items => _items;
 
-  
+  findPositionById(int id) =>
+      _items.firstWhere((element) => element.positionId == id);
 }

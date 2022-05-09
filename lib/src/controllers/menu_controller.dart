@@ -24,8 +24,22 @@ class MenuController extends GetxController {
     switch (itemName) {
       case overviewPageDisplayName:
         return _buildCustomIcon(Icons.space_dashboard, itemName);
+      case settingPageDisplayName:
+        return _buildCustomIcon(Icons.settings, itemName);
+      case authenticationPageDisplayName:
+        return _buildCustomIcon(Icons.logout, itemName);
       case walletPageDisplayName:
         return _buildCustomIcon(Icons.account_balance_wallet, itemName);
+      case transactionPageDisplayName:
+        return _buildCustomIcon(Icons.currency_exchange, itemName);
+      case branchPageDisplayName:
+        return _buildCustomIcon(Icons.store, itemName);
+      case accountPageDisplayName:
+        return _buildCustomIcon(Icons.contact_mail, itemName);
+      case bankPageDisplayName:
+        return _buildCustomIcon(Icons.account_balance, itemName);
+      case employeePageDisplayName:
+        return _buildCustomIcon(Icons.people_alt, itemName);
       default:
         return _buildCustomIcon(Icons.space_dashboard, itemName);
     }

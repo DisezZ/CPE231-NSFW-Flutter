@@ -1,5 +1,7 @@
 import 'package:cpe231_nsfw_flutter/src/constants/constants.dart';
 import 'package:cpe231_nsfw_flutter/src/layout.dart';
+import 'package:cpe231_nsfw_flutter/src/pages/authentication/authentication_page.dart';
+import 'package:cpe231_nsfw_flutter/src/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +13,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      getPages: [
+        GetPage(
+            name: rootRoute,
+            page: () {
+              return Layout();
+            }),
+        GetPage(
+            name: authenticationPageRoute, page: () => AuthenticationPage()),
+      ],
       debugShowCheckedModeBanner: false,
       title: 'cpe231_nsfw_flutter',
       theme: ThemeData(

@@ -13,58 +13,96 @@ class SideMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _size = MediaQuery.of(context).size;
+    final _stickyOptionNumber = 0;
+    final _sideMenuItemRoutes =
+        sideMenuItemRoutesList[authenticationController.userPositionId - 1];
 
     return Container(
       color: kLightColor,
-      child: ListView(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          if (Responsive.isSmallScreen(context))
-            Column(
-              mainAxisSize: MainAxisSize.min,
+          Expanded(
+            child: ListView(
               children: [
-                SizedBox(
-                  height: 40,
-                ),
-                Row(
-                  children: [
-                    SizedBox(width: _size.width / 48),
-                    Icon(Icons.star, color: kActiveColor),
-                    Flexible(
-                      child: CustomText(
-                        text: "Dash",
-                        size: 20,
-                        weight: FontWeight.bold,
-                        color: kActiveColor,
+                if (Responsive.isSmallScreen(context))
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      SizedBox(
+                        height: 40,
                       ),
-                    ),
-                    SizedBox(width: _size.width / 48),
-                  ],
+                      Row(
+                        children: [
+                          SizedBox(width: _size.width / 48),
+                          Icon(Icons.star, color: kActiveColor),
+                          Flexible(
+                            child: CustomText(
+                              text: "Dash",
+                              size: 20,
+                              weight: FontWeight.bold,
+                              color: kActiveColor,
+                            ),
+                          ),
+                          SizedBox(width: _size.width / 48),
+                        ],
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                    ],
+                  ),
+                Divider(
+                  color: kLightGreyColor.withOpacity(.1),
                 ),
-                SizedBox(
-                  height: 30,
+                Column(
+                  //mainAxisSize: MainAxisSize.max,
+                  children: [
+                    for (var item in _sideMenuItemRoutes)
+                      SideMenuItem(
+                        itemName: item.name,
+                        onTap: () {
+                          if (item.route == authenticationPageRoute) {
+                            navigationController.navigateTo(overviewPageRoute);
+                            menuController
+                                .changeActiveItemTo(overviewPageDisplayName);
+                            Get.offAllNamed(authenticationPageRoute);
+                          }
+                          if (!menuController.isActive(item.name)) {
+                            menuController.changeActiveItemTo(item.name);
+                            if (Responsive.isSmallScreen(context)) Get.back();
+                            navigationController.navigateTo(item.route);
+                          }
+                        },
+                      )
+                  ],
                 ),
               ],
             ),
-          Divider(
-            color: kLightGreyColor.withOpacity(.1),
           ),
-          Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              for (var item in sideMenuItemRoutes)
-                SideMenuItem(
-                    itemName: item.name,
-                    onTap: () {
-                      if (!menuController.isActive(item.name)) {
-                        menuController.changeActiveItemTo(item.name);
-                        if (Responsive.isSmallScreen(context)) Get.back();
-                        navigationController.navigateTo(item.route);
-                      }
-                    })
-            ],
-          )
+          /*for (var i = sideMenuItemRoutes.length - _stickyOptionNumber;
+              i < sideMenuItemRoutes.length;
+              i++)
+            SideMenuItem(
+                itemName: sideMenuItemRoutes[i].name,
+                onTap: () {
+                  if (sideMenuItemRoutes[i].route == authenticationPageRoute) {
+                    menuController.changeActiveItemTo(overviewPageDisplayName);
+                    Get.offAllNamed(authenticationPageRoute);
+                  }
+                  if (!menuController.isActive(sideMenuItemRoutes[i].name)) {
+                    menuController
+                        .changeActiveItemTo(sideMenuItemRoutes[i].name);
+                    if (Responsive.isSmallScreen(context)) Get.back();
+                    navigationController
+                        .navigateTo(sideMenuItemRoutes[i].route);
+                  }
+                }),*/
         ],
       ),
     );
   }
 }
+/*
+
+*/

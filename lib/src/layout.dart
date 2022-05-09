@@ -20,7 +20,7 @@ class _LayoutState extends State<Layout> {
     return Scaffold(
       key: scaffoldKey,
       appBar: buildTopNavigationBar(context, scaffoldKey),
-      extendBodyBehindAppBar: true,
+      //extendBodyBehindAppBar: true,
       drawer: Drawer(child: SideMenu()),
       body: Responsive(
         largeScreen: LargeScreen(),
