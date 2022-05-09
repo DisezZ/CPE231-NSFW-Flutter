@@ -1,6 +1,5 @@
 import 'package:cpe231_nsfw_flutter/src/constants/constants.dart';
 import 'package:cpe231_nsfw_flutter/src/routing/routes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
