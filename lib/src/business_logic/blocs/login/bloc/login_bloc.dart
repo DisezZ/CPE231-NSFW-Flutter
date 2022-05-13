@@ -14,10 +14,10 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc({
-    required AuthenticationRepository authenticationRepository,
-    required UserRepository userRepository
-  })  : _authenticationRepository = authenticationRepository,
+  LoginBloc(
+      {required AuthenticationRepository authenticationRepository,
+      required UserRepository userRepository})
+      : _authenticationRepository = authenticationRepository,
         _userRepository = userRepository,
         super(const LoginState()) {
     on<LoginUsernameChanged>(_onUsernameChanged);
@@ -62,8 +62,20 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
           username: state.username.value,
           password: state.password.value,
         );
-        //await _authenticationRepository.logIn(username: state.username.value, password: state.password.value);
         emit(state.copyWith(status: FormzStatus.submissionSuccess));
+        _userRepository.setUser(User(
+            userId: 2,
+            positionId: 2,
+            firstName: 'Rudeus',
+            lastName: 'Greyrat',
+            dateOfBirth: 0,
+            email: '',
+            mobileNumber: '',
+            address: '',
+            sex: '',
+            username: state.username.value,
+            password: state.username.value,
+            created: 0));
       } catch (_) {
         emit(state.copyWith(status: FormzStatus.submissionFailure));
       }

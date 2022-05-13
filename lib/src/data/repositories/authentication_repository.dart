@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cpe231_nsfw_flutter/src/data/data_providers/nsfw_api.dart';
+import 'package:cpe231_nsfw_flutter/src/data/repositories/user_repository.dart';
 
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 
@@ -20,6 +21,7 @@ class AuthenticationRepository {
     final _nsfwApi = NsfwApi(collectionPath: '/');
     final res = await _nsfwApi.getDocuments({});
     
+    _controller.add(AuthenticationStatus.authenticated);
   }
 
   void logOut() {

@@ -7,12 +7,13 @@ import 'package:uuid/uuid.dart';
 import '../models/user.dart';
 
 class UserRepository {
-  late User? _user;
+  User? _user;
   final NsfwApi api = NsfwApi(collectionPath: '/');
 
+  Future<void> setUser(User user) async => _user = user;
+
   Future<User?> getUser() async {
-    //final Response res = await api.dio.get('/');
-    //print(res.data);
+    if (_user != null) return _user;
     return Future.delayed(
       const Duration(milliseconds: 300),
       () => _user = const User(
