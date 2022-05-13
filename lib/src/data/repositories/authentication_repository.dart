@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:cpe231_nsfw_flutter/src/data/data_providers/nsfw_api.dart';
+
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 
 class AuthenticationRepository {
@@ -15,10 +17,9 @@ class AuthenticationRepository {
     required String username,
     required String password,
   }) async {
-    await Future.delayed(
-      const Duration(milliseconds: 3000),
-      () => _controller.add(AuthenticationStatus.authenticated),
-    );
+    final _nsfwApi = NsfwApi(collectionPath: '/');
+    final res = await _nsfwApi.getDocuments({});
+    
   }
 
   void logOut() {

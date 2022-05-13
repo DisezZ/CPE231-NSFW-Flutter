@@ -7,32 +7,27 @@ import 'package:uuid/uuid.dart';
 import '../models/user.dart';
 
 class UserRepository {
-  User? _user;
+  late User? _user;
   final NsfwApi api = NsfwApi(collectionPath: '/');
-
-  Future<void> setUser(User user) async {
-    _user = user;
-  }
 
   Future<User?> getUser() async {
     //final Response res = await api.dio.get('/');
     //print(res.data);
-    if (_user != null) return _user;
     return Future.delayed(
       const Duration(milliseconds: 300),
-      () => _user = User(
+      () => _user = const User(
           userId: 1,
           positionId: 3,
           firstName: 'Lutfee',
           lastName: 'Deemae',
-          dateOfBirth: DateTime.now(),
+          dateOfBirth: 0,
           email: 'lutfeedeemae@gmail.com',
           mobileNumber: '0937168730',
           address: '10',
           sex: 'M',
           username: 'DisezZ',
           password: '1234',
-          created: DateTime.now()),
+          created: 0),
     );
   }
 }

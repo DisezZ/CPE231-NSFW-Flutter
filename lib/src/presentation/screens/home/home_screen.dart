@@ -18,12 +18,9 @@ class HomeScreen extends StatelessWidget {
             Builder(
               builder: (context) {
                 final userId = context.select<AuthenticationBloc, int>(
-                  (bloc) => bloc.state.user!.userId,
+                  (bloc) => bloc.state.user.userId,
                 );
-                final username = context.select<AuthenticationBloc, String>(
-                  (bloc) => bloc.state.user!.username,
-                );
-                return Text('UserID: $userId\nName: $username');
+                return Text('UserID: $userId\n');
               },
             ),
             ElevatedButton(

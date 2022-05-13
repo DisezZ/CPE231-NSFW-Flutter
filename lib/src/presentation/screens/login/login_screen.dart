@@ -1,4 +1,5 @@
 import 'package:cpe231_nsfw_flutter/src/constants/constants.dart';
+import 'package:cpe231_nsfw_flutter/src/data/models/user.dart';
 import 'package:cpe231_nsfw_flutter/src/data/repositories/user_repository.dart';
 import 'package:cpe231_nsfw_flutter/src/presentation/screens/login/widgets/login_form.dart';
 import 'package:flutter/material.dart';
