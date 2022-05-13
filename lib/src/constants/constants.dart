@@ -22,3 +22,4 @@ final kLightColor = Color(0xFFF7F8FC);
 final kLightGreyColor = Color(0xFFA4A6B3);
 final kDarkColor = Color(0xFF363740);
 final kActiveColor = Color(0xFF0D47A1);
+
