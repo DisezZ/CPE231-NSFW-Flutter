@@ -8,14 +8,14 @@ class User extends Equatable {
   final int positionId;
   final String firstName;
   final String lastName;
-  final int dateOfBirth;
+  final DateTime dateOfBirth;
   final String email;
   final String mobileNumber;
   final String address;
   final String sex;
   final String username;
   final String password;
-  final int created;
+  final DateTime created;
 
   const User({
     required this.userId,
@@ -32,19 +32,20 @@ class User extends Equatable {
     required this.created,
   });
 
-  static const empty = User(
+  static empty() => User(
       userId: 0,
       positionId: 0,
       firstName: '',
       lastName: '',
-      dateOfBirth: 0,
+      dateOfBirth: DateTime(2002, 5, 6),
       email: '',
       mobileNumber: '',
       address: '',
       sex: '',
       username: '',
       password: '',
-      created: 0);
+      created: DateTime.now(),
+      );
 
   bool get isEmpty => this == User.empty;
 
@@ -65,6 +66,36 @@ class User extends Equatable {
         password,
         created,
       ];
+
+  factory User.fromJson(Map<String, dynamic> json) => User(
+        userId: json["user_id"],
+        positionId: json["position_id"],
+        firstName: json["first_name"],
+        lastName: json["last_name"],
+        dateOfBirth: DateTime.parse(json["date_of_birth"]),
+        email: json["email"],
+        mobileNumber: json["mobile_number"],
+        address: json["address"],
+        sex: json["sex"],
+        username: json["username"],
+        password: json["password"],
+        created: DateTime.parse(json["created"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "user_id": userId,
+        "position_id": positionId,
+        "first_name": firstName,
+        "last_name": lastName,
+        "date_of_birth": dateOfBirth.toIso8601String(),
+        "email": email,
+        "mobile_number": mobileNumber,
+        "address": address,
+        "sex": sex,
+        "username": username,
+        "password": password,
+        "created": created.toIso8601String(),
+      };
 }
 
 /*class User extends Equatable {

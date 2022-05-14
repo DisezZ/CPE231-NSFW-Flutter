@@ -1,14 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class Account {
+import 'package:equatable/equatable.dart';
+
+class Account extends Equatable {
   final int accountId;
   final int customerId;
   final int branchId;
   final int membershipId;
   final double balance;
   final DateTime created;
-  Account({
+
+  const Account({
     required this.accountId,
     required this.customerId,
     required this.branchId,
@@ -67,25 +70,5 @@ class Account {
   }
 
   @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-  
-    return other is Account &&
-      other.accountId == accountId &&
-      other.customerId == customerId &&
-      other.branchId == branchId &&
-      other.membershipId == membershipId &&
-      other.balance == balance &&
-      other.created == created;
-  }
-
-  @override
-  int get hashCode {
-    return accountId.hashCode ^
-      customerId.hashCode ^
-      branchId.hashCode ^
-      membershipId.hashCode ^
-      balance.hashCode ^
-      created.hashCode;
-  }
+  List<Object?> get props => [accountId, customerId, branchId, membershipId, balance, created];
 }

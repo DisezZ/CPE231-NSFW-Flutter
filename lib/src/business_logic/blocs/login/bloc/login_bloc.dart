@@ -9,6 +9,7 @@ import '../../../../data/repositories/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
+import '../../../../data/models/user.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
@@ -58,26 +59,20 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
       try {
         emit(state.copyWith(status: FormzStatus.submissionInProgress));
-        await _authenticationRepository.logIn(
+        final res = await _authenticationRepository.logIn(
           username: state.username.value,
           password: state.password.value,
         );
-        emit(state.copyWith(status: FormzStatus.submissionSuccess));
-        _userRepository.setUser(User(
-            userId: 2,
-            positionId: 2,
-            firstName: 'Rudeus',
-            lastName: 'Greyrat',
-            dateOfBirth: 0,
-            email: '',
-            mobileNumber: '',
-            address: '',
-            sex: '',
-            username: state.username.value,
-            password: state.username.value,
-            created: 0));
+        if (!res.error) {
+          emit(state.copyWith(status: FormzStatus.submissionSuccess));
+        } else {
+          final user = res.data[0];
+          await _userRepository.setUser(user);
+          emit(state.copyWith(status: FormzStatus.submissionFailure));
+        }
       } catch (_) {
         emit(state.copyWith(status: FormzStatus.submissionFailure));
+        rethrow;
       }
     }
   }

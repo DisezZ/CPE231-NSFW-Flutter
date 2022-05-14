@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import '../../constants/api.dart';
 import 'package:dio/dio.dart';
 
@@ -8,6 +10,7 @@ abstract class AbstractApi {
   getDocuments(Map<String, dynamic> param);
 
   addDocuments(List<Map<String, dynamic>> data);
+  addDocument(Map<String, dynamic> data);
 
   updateDocument(int id, Map<String, dynamic> data);
   updateDocuments(Map<String, dynamic> param, Map<String, dynamic> data);
@@ -22,14 +25,15 @@ class NsfwApi implements AbstractApi {
   late BaseOptions options;
 
   @override
-  String endPointUri = remoteEndpoint;
+  String endPointUri = altRemoteEndpoint;
 
   NsfwApi({required this.collectionPath}) {
     options = BaseOptions()
-      ..baseUrl = remoteEndpoint
+      ..baseUrl = altRemoteEndpoint
       ..headers = {
         "Content-Type": "application/json",
         "Authorization": null,
+        "Accept": "application/json",
       };
     dio = Dio(this.options);
     this.collectionPath = collectionPath;
@@ -49,6 +53,12 @@ class NsfwApi implements AbstractApi {
 
   @override
   Future<Response> addDocuments(List<Map<String, dynamic>> data) async {
+    final res = await dio.post(collectionPath, data: data);
+    return res;
+  }
+
+  @override
+  Future<Response> addDocument(Map<String, dynamic> data) async {
     final res = await dio.post(collectionPath, data: data);
     return res;
   }

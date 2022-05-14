@@ -10,25 +10,42 @@ class UserRepository {
   User? _user;
   final NsfwApi api = NsfwApi(collectionPath: '/');
 
-  Future<void> setUser(User user) async => _user = user;
+  Future<User> setUser(
+    User? user, {
+    int? userId,
+    int? positionId,
+    String? firstName,
+    String? lastName,
+    DateTime? dateOfBirth,
+    String? email,
+    String? mobileNumber,
+    String? address,
+    String? sex,
+    String? username,
+    String? password,
+    DateTime? created,
+  }) async {
+    if (user == null) {
+      return _user = User(
+        userId: userId ?? 1,
+        positionId: positionId ?? 3,
+        firstName: firstName ?? '',
+        lastName: lastName ?? '',
+        dateOfBirth: dateOfBirth ?? DateTime.utc(2002, 5, 6),
+        email: email ?? '',
+        mobileNumber: mobileNumber ?? '',
+        address: address ?? '',
+        sex: sex ?? '',
+        username: username ?? '',
+        password: password ?? '',
+        created: created ?? DateTime.now(),
+      );
+    } else {
+      return _user = User.empty();
+    }
+  }
 
   Future<User?> getUser() async {
-    if (_user != null) return _user;
-    return Future.delayed(
-      const Duration(milliseconds: 300),
-      () => _user = const User(
-          userId: 1,
-          positionId: 3,
-          firstName: 'Lutfee',
-          lastName: 'Deemae',
-          dateOfBirth: 0,
-          email: 'lutfeedeemae@gmail.com',
-          mobileNumber: '0937168730',
-          address: '10',
-          sex: 'M',
-          username: 'DisezZ',
-          password: '1234',
-          created: 0),
-    );
+    return Future.delayed(const Duration(milliseconds: 300), () => _user);
   }
 }
