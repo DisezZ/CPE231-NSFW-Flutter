@@ -62,12 +62,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         final res = await _authenticationRepository.logIn(
           username: state.username.value,
           password: state.password.value,
-        );
+          userRepo: _userRepository,
+        ); //
         if (!res.error) {
           emit(state.copyWith(status: FormzStatus.submissionSuccess));
         } else {
           final user = res.data[0];
-          await _userRepository.setUser(user);
+          //await _userRepository.setUser(user); //
           emit(state.copyWith(status: FormzStatus.submissionFailure));
         }
       } catch (_) {

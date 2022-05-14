@@ -2,6 +2,9 @@ import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/overview/c
 import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/transaction/customer_transaction.dart';
 import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/wallet/customer_wallet.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../business_logic/blocs/authentication/bloc/authentication_bloc.dart';
 
 class CustomerScreen extends StatefulWidget {
   CustomerScreen({Key? key}) : super(key: key);
@@ -27,7 +30,18 @@ class _CustomerScreenState extends State<CustomerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          ElevatedButton(
+            child: const Text('Logout'),
+            onPressed: () {
+              context
+                  .read<AuthenticationBloc>()
+                  .add(AuthenticationLogoutRequested());
+            },
+          ),
+        ],
+      ),
       body: _tabs[_index],
       bottomNavigationBar: BottomNavigationBar(
         items: const [

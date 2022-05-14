@@ -26,6 +26,7 @@ class UserRepository {
     DateTime? created,
   }) async {
     if (user == null) {
+      print('USER: ${username}');
       return _user = User(
         userId: userId ?? 1,
         positionId: positionId ?? 3,
@@ -41,7 +42,8 @@ class UserRepository {
         created: created ?? DateTime.now(),
       );
     } else {
-      return _user = User.empty();
+      _user = user;
+      return user;
     }
   }
 
