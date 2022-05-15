@@ -1,5 +1,7 @@
 import 'package:cpe231_nsfw_flutter/src/constants/constants.dart';
 import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/customer_screen.dart';
+import 'package:cpe231_nsfw_flutter/src/presentation/screens/employee/employee.dart';
+import 'package:cpe231_nsfw_flutter/src/presentation/screens/manager/manager_screen.dart';
 
 import '../../../business_logic/blocs/authentication/bloc/authentication_bloc.dart';
 import 'package:flutter/material.dart';
@@ -16,16 +18,25 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: ((context, state) {
-      if (state.user.positionId == 1) {
-        //return the manager page
-        return Container(child: Text('Manager'));
-      } else if (state.user.positionId == 2) {
-        // return the employee page
-        return Container(child: Text('Employee'));
-      } else if (state.user.positionId == 3) {
-        return CustomerScreen();
+      if (state.user.userId == 0) {
+        return Container(
+          color: Colors.transparent,
+        );
       } else {
-        return Container(child: Text('Unknown'));
+        if (state.user.positionId == 1) {
+          //return the manager page
+          return ManagerScreen();
+        } else if (state.user.positionId == 2) {
+          // return the employee page
+          return EmployeeScreen();
+        } else if (state.user.positionId == 3) {
+          return CustomerScreen();
+        } else {
+          return Container(
+            child: const Text('Unknown User'),
+            color: Colors.blue,
+          );
+        }
       }
     }));
   }

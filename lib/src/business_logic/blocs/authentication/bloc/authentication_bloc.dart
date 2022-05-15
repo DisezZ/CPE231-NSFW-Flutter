@@ -47,7 +47,7 @@ class AuthenticationBloc
       case AuthenticationStatus.unauthenticated:
         return emit(AuthenticationState.unauthenticated());
       case AuthenticationStatus.authenticated:
-        final user =await  _userRepository.getUser();
+        final user = await _userRepository.getUser();
         return emit(user != null
             ? AuthenticationState.authenticated(user)
             : AuthenticationState.unauthenticated());
@@ -59,14 +59,13 @@ class AuthenticationBloc
   void _onAuthenticationLogoutRequested(
     AuthenticationLogoutRequested event,
     Emitter<AuthenticationState> emit,
-  ) {
+  ) async {
+    await _userRepository.setUser(User.empty());
     _authenticationRepository.logOut();
   }
 
   void _onAuthenticationLoginSucceeded(
     AuthenticationLoginSucceeded event,
     Emitter<AuthenticationState> emit,
-  ) {
-    
-  }
+  ) {}
 }

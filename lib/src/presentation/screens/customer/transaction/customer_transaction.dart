@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'billing/billing_transaction.dart';
 import 'deposit/deposit_transaction.dart';
 import 'loan/loan_transaction.dart';
+import 'withdraw/widgets/withdraw_form.dart';
 import 'withdraw/withdraw_transaction.dart';
 
 class CustomerTransaction extends StatelessWidget {

@@ -48,6 +48,6 @@ class UserRepository {
   }
 
   Future<User?> getUser() async {
-    return Future.delayed(const Duration(milliseconds: 300), () => _user);
+    return Future.delayed(const Duration(milliseconds: 100), () => _user);
   }
 }

@@ -37,7 +37,3 @@ class TopupAmountChanged extends TopupEvent {
 class TopupSubmitted extends TopupEvent {
   const TopupSubmitted();
 }
-
-class TopupSuccessful extends TopupEvent {
-  const TopupSuccessful();
-}

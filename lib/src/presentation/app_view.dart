@@ -63,7 +63,8 @@ class _AppViewState extends State<AppView> {
                 break;
               default:
                 _navigator.pushAndRemoveUntil<void>(
-                  HomePage.route(),
+                  MaterialPageRoute<void>(
+                      builder: (_) => const Text('Unknown Status')),
                   (route) => false,
                 );
                 break;

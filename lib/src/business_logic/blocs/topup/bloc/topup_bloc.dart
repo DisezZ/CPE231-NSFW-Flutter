@@ -3,9 +3,9 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
-import '../../../data/repositories/authentication_repository.dart';
-import '../../../data/repositories/user_repository.dart';
-import 'model/input.dart';
+import '../../../../data/models/inputs.dart';
+import '../../../../data/repositories/authentication_repository.dart';
+import '../../../../data/repositories/user_repository.dart';
 
 part 'topup_event.dart';
 part 'topup_state.dart';
@@ -27,7 +27,7 @@ class TopupBloc extends Bloc<TopupEvent, TopupState> {
     TopupFromAccountNumberChanged event,
     Emitter<TopupState> emit,
   ) {
-    final fromAccountNumber = FromAccountNumber.dirty(event.fromAccountNumber);
+    final fromAccountNumber = AccountNumberInput.dirty(event.fromAccountNumber);
     emit(state.copyWith(
       fromAccountNumber: fromAccountNumber,
       status: Formz.validate(
@@ -39,7 +39,7 @@ class TopupBloc extends Bloc<TopupEvent, TopupState> {
     TopupToMobileNumberChanged event,
     Emitter<TopupState> emit,
   ) {
-    final toMobileNumber = ToMobileNumber.dirty(event.toMobileNumber);
+    final toMobileNumber = MobileNumberInput.dirty(event.toMobileNumber);
     emit(state.copyWith(
       toMobileNumber: toMobileNumber,
       status: Formz.validate(
@@ -51,7 +51,7 @@ class TopupBloc extends Bloc<TopupEvent, TopupState> {
     TopupAmountChanged event,
     Emitter<TopupState> emit,
   ) {
-    final amount = Amount.dirty(event.amount);
+    final amount = MoneyInput.dirty(event.amount);
     emit(state.copyWith(
       amount: amount,
       status: Formz.validate(
@@ -67,15 +67,16 @@ class TopupBloc extends Bloc<TopupEvent, TopupState> {
       emit(state.copyWith(status: FormzStatus.submissionInProgress));
       try {
         emit(state.copyWith(status: FormzStatus.submissionInProgress));
-        _topupRepository.test();
         final res = await _topupRepository.topup(
           fromAccountNumber: state.fromAccountNumber.value,
-          toAccountNumber: state.toMobileNumber.value,
+          toMobileNumber: state.toMobileNumber.value,
           amount: state.amount.value,
         );
-        _topupRepository.test();
-        print('submittedddddd');
-        emit(state.copyWith(status: FormzStatus.submissionSuccess));
+        if (res.error) {
+          emit(state.copyWith(status: FormzStatus.submissionCanceled));
+        } else {
+          emit(state.copyWith(status: FormzStatus.submissionSuccess));
+        }
         //final User user = await _userRepository.getUser() ?? User.empty;
       } catch (_) {
         emit(state.copyWith(status: FormzStatus.submissionFailure));

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 
-import '../../../../../../business_logic/blocs/topup_bloc/topup_bloc.dart';
+import '../../../../../../business_logic/blocs/topup/bloc/topup_bloc.dart';
 import 'package:http/http.dart' as http;
 
 import '../../../../../../constants/api.dart';
@@ -113,9 +113,11 @@ class _TopupButton extends StatelessWidget {
         } else {
           return Column(
             children: [
-              Visibility(
-                  visible: state.status.isSubmissionFailure,
-                  child: Text('Error')),
+              state.status.isSubmissionSuccess ? Text('Success') : Container(),
+              state.status.isSubmissionFailure ? Text('Failured') : Container(),
+              state.status.isSubmissionCanceled
+                  ? Text('Canceled')
+                  : Container(),
               ElevatedButton(
                 key: const Key('topupForm_continue_raisedButton'),
                 child: const Text('Topup'),

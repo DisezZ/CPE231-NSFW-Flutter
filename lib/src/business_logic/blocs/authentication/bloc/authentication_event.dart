@@ -21,4 +21,3 @@ class AuthenticationLogoutRequested extends AuthenticationEvent {}
 class AuthenticationLoginSucceeded extends AuthenticationEvent {
   
 }
-

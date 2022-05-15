@@ -1,38 +1,46 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
+import 'package:http/http.dart' as http;
+import 'package:uuid/uuid.dart';
+
 import 'package:cpe231_nsfw_flutter/src/constants/api.dart';
 import 'package:cpe231_nsfw_flutter/src/data/data_providers/nsfw_api.dart';
-import 'package:dio/dio.dart';
-import 'package:uuid/uuid.dart';
+import 'package:cpe231_nsfw_flutter/src/data/models/transaction.dart';
+import 'package:cpe231_nsfw_flutter/src/data/models/topup_transaction.dart';
 
 import '../models/response.dart';
 import '../models/user.dart';
 
-import 'package:http/http.dart' as http;
-
 class TopupRepository {
-  String? _slipt;
+  TopupTransaction? _topupTransaction;
 
-  void test() {
-    print('test topup repo');
-  }
-
-  Future<ApiResponse> topup(
+  Future<TransactionResponse> topup(
       {required String fromAccountNumber,
-      required String toAccountNumber,
+      required String toMobileNumber,
       required String amount}) async {
     print(
-        'topup: from ${int.parse(fromAccountNumber)} to ${int.parse(toAccountNumber)} with amount ${double.parse(toAccountNumber)}');
+        'topup: from ${int.parse(fromAccountNumber)} to $toMobileNumber with amount ${double.parse(amount)}');
     print('hello');
-    final res = await NsfwApi(collectionPath: '/api/Topup/mobile').addDocument({
-      fromAccountNumber: fromAccountNumber,
-      toAccountNumber: toAccountNumber,
-      amount: amount,
-    });
-    print("Status: ${res.statusCode} Body: ${res.data}");
-    final decoded = apiResponseFromJson(res.data);
-    print('Error: ${decoded.message}');
-    return decoded;
+    final res = await http.post(
+        Uri.parse(
+            'https://shrouded-ocean-23479.herokuapp.com/api/Topup/mobile'),
+        body: jsonEncode({
+          "fromAccountId": int.parse(fromAccountNumber),
+          "mobNumber": toMobileNumber,
+          "amount": double.parse(amount),
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": '',
+          "Accept": "application/json",
+        });
+    print("Body: ${res.body}");
+    final apiRes = TransactionResponse.fromJson((res.body));
+    print('Error: ${apiRes.message}');
+    if (!apiRes.error) {}
+    return apiRes;
   }
 }

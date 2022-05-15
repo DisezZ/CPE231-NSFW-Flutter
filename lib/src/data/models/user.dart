@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
@@ -96,6 +97,40 @@ class User extends Equatable {
         "password": password,
         "created": created.toIso8601String(),
       };
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'userId': userId,
+      'positionId': positionId,
+      'firstName': firstName,
+      'lastName': lastName,
+      'dateOfBirth': dateOfBirth.millisecondsSinceEpoch,
+      'email': email,
+      'mobileNumber': mobileNumber,
+      'address': address,
+      'sex': sex,
+      'username': username,
+      'password': password,
+      'created': created.millisecondsSinceEpoch,
+    };
+  }
+
+  factory User.fromMap(Map<String, dynamic> map) {
+    return User(
+      userId: map['userId'] as int,
+      positionId: map['positionId'] as int,
+      firstName: map['firstName'] as String,
+      lastName: map['lastName'] as String,
+      dateOfBirth: DateTime.fromMillisecondsSinceEpoch(map['dateOfBirth'] as int),
+      email: map['email'] as String,
+      mobileNumber: map['mobileNumber'] as String,
+      address: map['address'] as String,
+      sex: map['sex'] as String,
+      username: map['username'] as String,
+      password: map['password'] as String,
+      created: DateTime.fromMillisecondsSinceEpoch(map['created'] as int),
+    );
+  }
 }
 
 /*class User extends Equatable {

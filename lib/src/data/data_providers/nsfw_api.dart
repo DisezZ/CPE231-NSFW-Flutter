@@ -31,9 +31,8 @@ class NsfwApi implements AbstractApi {
     options = BaseOptions()
       ..baseUrl = altRemoteEndpoint
       ..headers = {
-        "Content-Type": "application/json",
+        "Content-Type": "application/x-www-form-urlencoded",
         "Authorization": null,
-        "Accept": "application/json",
       };
     dio = Dio(this.options);
     this.collectionPath = collectionPath;
