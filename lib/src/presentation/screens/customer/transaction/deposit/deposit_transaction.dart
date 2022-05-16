@@ -1,6 +1,6 @@
-import 'package:cpe231_nsfw_flutter/src/business_logic/blocs/transfer/bloc/transfer_bloc.dart';
-import 'package:cpe231_nsfw_flutter/src/data/repositories/transfer_repository.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/transaction/transfer/widgets/transfer_form.dart';
+import '../../../../../business_logic/blocs/transfer/bloc/transfer_bloc.dart';
+import '../../../../../data/repositories/transfer_repository.dart';
+import '../transfer/widgets/transfer_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

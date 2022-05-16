@@ -1,11 +1,10 @@
-import 'package:cpe231_nsfw_flutter/src/constants/constants.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/customer_screen.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/employee/employee.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/manager/manager_screen.dart';
-
-import '../../../business_logic/blocs/authentication/bloc/authentication_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../business_logic/blocs/authentication/bloc/authentication_bloc.dart';
+import '../customer/customer_screen.dart';
+import '../employee/employee.dart';
+import '../manager/manager_screen.dart';
 
 enum Authorization { manager, employee, customer }
 

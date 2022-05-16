@@ -1,6 +1,7 @@
-import 'package:cpe231_nsfw_flutter/src/screens/home/home_screen.dart';
-import 'package:cpe231_nsfw_flutter/src/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../home/home_screen.dart';
+import '../login/login_screen.dart';
 
 class AuthenticationPage extends StatefulWidget {
   const AuthenticationPage({Key? key}) : super(key: key);

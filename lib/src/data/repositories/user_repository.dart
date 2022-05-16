@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:cpe231_nsfw_flutter/src/data/data_providers/nsfw_api.dart';
+import '../data_providers/nsfw_api.dart';
 import 'package:dio/dio.dart';
 import 'package:uuid/uuid.dart';
 

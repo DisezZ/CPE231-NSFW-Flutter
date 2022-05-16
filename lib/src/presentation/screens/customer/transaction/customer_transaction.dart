@@ -1,5 +1,5 @@
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/transaction/topup/topup_transaction.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/transaction/transfer/transfer_transaction.dart';
+import 'topup/topup_transaction.dart';
+import 'transfer/transfer_transaction.dart';
 import 'package:flutter/material.dart';
 
 import 'billing/billing_transaction.dart';

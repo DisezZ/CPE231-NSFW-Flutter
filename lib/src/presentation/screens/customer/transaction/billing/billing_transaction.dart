@@ -1,6 +1,6 @@
-import 'package:cpe231_nsfw_flutter/src/business_logic/blocs/billing/bloc/billing_bloc.dart';
-import 'package:cpe231_nsfw_flutter/src/data/repositories/billing_repository.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/transaction/billing/widgets/billing_form.dart';
+import '../../../../../business_logic/blocs/billing/bloc/billing_bloc.dart';
+import '../../../../../data/repositories/billing_repository.dart';
+import 'widgets/billing_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

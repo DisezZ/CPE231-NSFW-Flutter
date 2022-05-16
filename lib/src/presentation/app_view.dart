@@ -1,4 +1,4 @@
-import 'package:cpe231_nsfw_flutter/src/presentation/pages/home.dart';
+import 'pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,11 +28,6 @@ class _AppViewState extends State<AppView> {
       theme: ThemeData(
         colorScheme: _customColorScheme(),
         fontFamily: 'Georgia',
-        textTheme: const TextTheme(
-          headline1: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-          headline6: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-          bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
-        ),
         buttonTheme: ButtonThemeData(colorScheme: _customColorScheme()),
         cardTheme: CardTheme(color: kBackground),
         bottomNavigationBarTheme:

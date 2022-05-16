@@ -1,8 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 import 'package:equatable/equatable.dart';
-import 'package:uuid/uuid.dart';
 
 class User extends Equatable {
   final int userId;

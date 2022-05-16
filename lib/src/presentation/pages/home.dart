@@ -1,8 +1,8 @@
-import '../../constants/api.dart';
-import '../../data/data_providers/api.dart';
-import '../../data/data_providers/nsfw_api.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+
+import '../../data/data_providers/api.dart';
+import '../../data/data_providers/nsfw_api.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

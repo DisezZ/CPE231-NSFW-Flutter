@@ -1,5 +1,5 @@
-import 'package:cpe231_nsfw_flutter/src/app.dart';
-import 'package:cpe231_nsfw_flutter/src/screens/home/home_screen.dart';
+import '../../../app.dart';
+import '../../home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignInController {

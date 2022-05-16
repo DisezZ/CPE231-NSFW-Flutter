@@ -1,12 +1,11 @@
-import 'package:cpe231_nsfw_flutter/src/constants/constants.dart';
-import 'package:cpe231_nsfw_flutter/src/data/models/user.dart';
-import 'package:cpe231_nsfw_flutter/src/data/repositories/user_repository.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/login/widgets/login_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../business_logic/blocs/login/bloc/login_bloc.dart';
+import '../../../constants/constants.dart';
 import '../../../data/repositories/authentication_repository.dart';
+import '../../../data/repositories/user_repository.dart';
+import 'widgets/login_form.dart';
 
 class LoginScreen extends StatelessWidget {
   static Route route() {

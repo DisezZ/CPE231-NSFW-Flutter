@@ -1,4 +1,4 @@
-import 'package:cpe231_nsfw_flutter/src/business_logic/blocs/login/bloc/login_bloc.dart';
+import '../../../../business_logic/blocs/login/bloc/login_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 

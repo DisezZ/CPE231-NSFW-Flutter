@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:cpe231_nsfw_flutter/src/data/models/user.dart';
-import 'package:cpe231_nsfw_flutter/src/data/repositories/user_repository.dart';
+import '../../../../data/models/user.dart';
+import '../../../../data/repositories/user_repository.dart';
 
 import '../../../../data/models/password.dart';
 import '../../../../data/models/username.dart';
@@ -67,9 +67,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         if (!res.error) {
           emit(state.copyWith(status: FormzStatus.submissionSuccess));
         } else {
-          final user = res.data[0];
+          //final user = res.data[0];
           //await _userRepository.setUser(user); //
-          emit(state.copyWith(status: FormzStatus.submissionFailure));
+          emit(state.copyWith(status: FormzStatus.submissionCanceled));
         }
       } catch (_) {
         emit(state.copyWith(status: FormzStatus.submissionFailure));

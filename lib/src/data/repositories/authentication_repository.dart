@@ -2,11 +2,10 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
-
 import 'package:cpe231_nsfw_flutter/src/data/data_providers/nsfw_api.dart';
 import 'package:cpe231_nsfw_flutter/src/data/models/user.dart';
 import 'package:cpe231_nsfw_flutter/src/data/repositories/user_repository.dart';
+import 'package:http/http.dart' as http;
 
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 

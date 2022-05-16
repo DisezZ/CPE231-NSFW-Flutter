@@ -1,3 +1,4 @@
+import 'package:cpe231_nsfw_flutter/src/presentation/screens/employee/customer/change_membership/update_membership.dart';
 import 'package:flutter/material.dart';
 
 class EmployeeCustomer extends StatelessWidget {
@@ -9,8 +10,13 @@ class EmployeeCustomer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text('Employee Customer'),
+    return Column(
+      children: [
+        ElevatedButton(
+            onPressed: (() =>
+                Navigator.push(context, UpdateAccountMembershipScreen.route())),
+            child: Text("Update Employee's Branch")),
+      ],
     );
   }
 }

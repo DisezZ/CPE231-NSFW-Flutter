@@ -1,6 +1,6 @@
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/overview/customer_overview.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/transaction/customer_transaction.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/wallet/customer_wallet.dart';
+import 'overview/customer_overview.dart';
+import 'transaction/customer_transaction.dart';
+import 'wallet/customer_wallet.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

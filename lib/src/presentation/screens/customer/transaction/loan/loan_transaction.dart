@@ -1,5 +1,5 @@
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/transaction/loan/loaning/loaning_loan.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/customer/transaction/loan/pay_loan/pay_loan.dart';
+import 'loaning/loaning_loan.dart';
+import 'pay_loan/pay_loan.dart';
 import 'package:flutter/material.dart';
 
 class LoanTransaction extends StatelessWidget {

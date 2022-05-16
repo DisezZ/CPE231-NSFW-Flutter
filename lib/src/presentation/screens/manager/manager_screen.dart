@@ -1,7 +1,7 @@
-import 'package:cpe231_nsfw_flutter/src/business_logic/blocs/authentication/bloc/authentication_bloc.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/manager/bank/manager_bank.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/manager/employee/manager_employee.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/manager/overview/manager_overview.dart';
+import '../../../business_logic/blocs/authentication/bloc/authentication_bloc.dart';
+import 'bank/manager_bank.dart';
+import 'employee/manager_employee.dart';
+import 'overview/manager_overview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,9 +20,9 @@ class _ManagerScreenState extends State<ManagerScreen> {
   int _index = 0;
 
   final _tabs = [
-    const ManagerOverview(),
-    const ManagerBank(),
-    const ManagerEmployee(),
+    ManagerOverview(),
+    ManagerBank(),
+    ManagerEmployee(),
     Container()
   ];
 

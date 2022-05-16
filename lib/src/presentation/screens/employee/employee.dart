@@ -1,9 +1,9 @@
-import 'package:cpe231_nsfw_flutter/src/business_logic/blocs/authentication/bloc/authentication_bloc.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/employee/branch/employee_branch.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/employee/customer/employee_customer.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/manager/bank/manager_bank.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/manager/employee/manager_employee.dart';
-import 'package:cpe231_nsfw_flutter/src/presentation/screens/manager/overview/manager_overview.dart';
+import '../../../business_logic/blocs/authentication/bloc/authentication_bloc.dart';
+import 'branch/employee_branch.dart';
+import 'customer/employee_customer.dart';
+import '../manager/bank/manager_bank.dart';
+import '../manager/employee/manager_employee.dart';
+import '../manager/overview/manager_overview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -2,18 +2,10 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
-import 'package:http/http.dart' as http;
-import 'package:uuid/uuid.dart';
-
-import 'package:cpe231_nsfw_flutter/src/constants/api.dart';
-import 'package:cpe231_nsfw_flutter/src/data/data_providers/nsfw_api.dart';
 import 'package:cpe231_nsfw_flutter/src/data/models/transaction.dart';
-import 'package:cpe231_nsfw_flutter/src/data/models/topup_transaction.dart';
+import 'package:http/http.dart' as http;
 
 import '../../presentation/screens/customer/transaction/loan/loan_transaction.dart';
-import '../models/response.dart';
-import '../models/user.dart';
 
 class LoanRepository {
   LoanTransaction? _loanTransaction;

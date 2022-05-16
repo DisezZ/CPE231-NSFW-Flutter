@@ -1,4 +1,4 @@
-import 'package:cpe231_nsfw_flutter/src/data/repositories/atm_repository.dart';
+import '../../../../data/repositories/atm_repository.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
