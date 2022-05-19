@@ -1,30 +1,27 @@
 # cpe231_nsfw_flutter
 
-A new Flutter project.
+A Flutter project that seves as a frontend for CPE231 final project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application that follows the
-[simple app state management
-tutorial](https://flutter.dev/docs/development/data-and-backend/state-mgmt/simple).
+This project can be build into different ways.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### To Run
 
-## Assets
+to run this project, type [needed emulator or connect to mobile to run]
+````
+flutter run
+````
 
-The `assets` directory houses images, fonts, and any other files you want to
-include with your application.
+### To Build
 
-The `assets/images` directory contains [resolution-aware
-images](https://flutter.dev/docs/development/ui/assets-and-images#resolution-aware).
+For web, run:
+````
+flutter build web
+````
 
-## Localization
+For android, run:
+````
+flutter build apk --build-name=1.0 --build-number=1
+````
 
-This project generates localized messages based on arb files found in
-the `lib/src/localization` directory.
-
-To support additional languages, please visit the tutorial on
-[Internationalizing Flutter
-apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
