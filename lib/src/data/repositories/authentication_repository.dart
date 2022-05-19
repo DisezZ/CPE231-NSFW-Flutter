@@ -7,6 +7,8 @@ import 'package:cpe231_nsfw_flutter/src/data/models/user.dart';
 import 'package:cpe231_nsfw_flutter/src/data/repositories/user_repository.dart';
 import 'package:http/http.dart' as http;
 
+import '../../constants/api.dart';
+
 enum AuthenticationStatus { unknown, authenticated, unauthenticated }
 
 class AuthenticationRepository {
@@ -24,32 +26,22 @@ class AuthenticationRepository {
     required UserRepository userRepo,
   }) async {
     print('logging in');
-    final nsfwApi = NsfwApi(collectionPath: '/api/Login/userLogin');
-    print('get');
-    /*final res = await http.post(
-          Uri.parse(
-              'https://shrouded-ocean-23479.herokuapp.com/api/Login/userLogin'),
-          body: {
-            username: username,
-            password: password,
-          });*/
-    final res = await http.post(
-        Uri.parse(
-            'https://shrouded-ocean-23479.herokuapp.com/api/Login/userLogin'),
-        body: jsonEncode({
-          "username": username,
-          "password": password,
-        }),
-        headers: {
+    final res =
+        await http.post(Uri.parse(currentEndpoint + '/api/Login/userLogin'),
+            body: jsonEncode({
+              "username": username,
+              "password": password,
+            }),
+            headers: {
           "Content-Type": "application/json",
           "Authorization": '',
           "Accept": "application/json",
         });
+    print(res.body);
     final apiRes = authenticationResponseFromJson(res.body);
     print(res.body);
     if (apiRes.error) {
       print('error');
-      //_controller.add(AuthenticationStatus.unauthenticated);
     } else {
       print('not error');
       apiRes.data.isNotEmpty
@@ -80,30 +72,33 @@ class AuthenticationRepository {
   void dispose() => _controller.close();
 }
 
-AuthenticationResponse authenticationResponseFromJson(String str) => AuthenticationResponse.fromJson(json.decode(str));
+AuthenticationResponse authenticationResponseFromJson(String str) =>
+    AuthenticationResponse.fromJson(json.decode(str));
 
-String authenticationResponseToJson(AuthenticationResponse data) => json.encode(data.toJson());
+String authenticationResponseToJson(AuthenticationResponse data) =>
+    json.encode(data.toJson());
 
 class AuthenticationResponse {
-    AuthenticationResponse({
-        required this.error,
-        required this.data,
-        required this.message,
-    });
+  AuthenticationResponse({
+    required this.error,
+    required this.data,
+    required this.message,
+  });
 
-    bool error;
-    List<User> data;
-    String message;
+  bool error;
+  List<User> data;
+  String message;
 
-    factory AuthenticationResponse.fromJson(Map<String, dynamic> json) => AuthenticationResponse(
+  factory AuthenticationResponse.fromJson(Map<String, dynamic> json) =>
+      AuthenticationResponse(
         error: json["error"],
         data: List<User>.from(json["data"].map((x) => User.fromJson(x))),
         message: json["message"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "error": error,
         "data": List<dynamic>.from(data.map((x) => x.toJson())),
         "message": message,
-    };
+      };
 }

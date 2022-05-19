@@ -32,21 +32,22 @@ class _AccountNumberInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UpdateAccountMembershipBloc, UpdateAccountMembershipState>(
+    return BlocBuilder<UpdateAccountMembershipBloc,
+        UpdateAccountMembershipState>(
       buildWhen: (previous, current) =>
           previous.accountNumber != current.accountNumber,
       builder: (context, state) {
         return TextField(
-          key: const Key('updateAccountMembershipForm_accountNumberInput_textField'),
+          key: const Key(
+              'updateAccountMembershipForm_accountNumberInput_textField'),
           onChanged: (accountNumber) => context
               .read<UpdateAccountMembershipBloc>()
               .add(UpdateAccountMembershipAccountNumberChanged(accountNumber)),
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
-            labelText: 'from account number',
-            errorText: state.accountNumber.invalid
-                ? 'invalid account number'
-                : null,
+            labelText: 'account number',
+            errorText:
+                state.accountNumber.invalid ? 'invalid account number' : null,
           ),
         );
       },
@@ -57,20 +58,24 @@ class _AccountNumberInput extends StatelessWidget {
 class _MembershipNumberInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UpdateAccountMembershipBloc, UpdateAccountMembershipState>(
+    return BlocBuilder<UpdateAccountMembershipBloc,
+        UpdateAccountMembershipState>(
       buildWhen: (previous, current) =>
           previous.membershipNumber != current.membershipNumber,
       builder: (context, state) {
         return TextField(
-          key: const Key('updateAccountMembershipForm_membershipNumberInput_textField'),
+          key: const Key(
+              'updateAccountMembershipForm_membershipNumberInput_textField'),
           onChanged: (membershipNumber) => context
               .read<UpdateAccountMembershipBloc>()
-              .add(UpdateAccountMembershipMembershiphNumberChanged(membershipNumber)),
+              .add(UpdateAccountMembershipMembershiphNumberChanged(
+                  membershipNumber)),
           keyboardType: TextInputType.phone,
           decoration: InputDecoration(
-            labelText: 'membership number',
-            errorText:
-                state.membershipNumber.invalid ? 'invalid account number' : null,
+            labelText: 'new membership number',
+            errorText: state.membershipNumber.invalid
+                ? 'invalid account number'
+                : null,
           ),
         );
       },
@@ -81,7 +86,8 @@ class _MembershipNumberInput extends StatelessWidget {
 class _UpdateAccountMembershipButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UpdateAccountMembershipBloc, UpdateAccountMembershipState>(
+    return BlocBuilder<UpdateAccountMembershipBloc,
+        UpdateAccountMembershipState>(
       buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         if (state.status.isSubmissionInProgress) {
@@ -91,10 +97,13 @@ class _UpdateAccountMembershipButton extends StatelessWidget {
             children: [
               state.status.isSubmissionSuccess ? Text('Success') : Container(),
               state.status.isSubmissionFailure ? Text('Failured') : Container(),
-              state.status.isSubmissionCanceled ? Text('Canceled') : Container(),
+              state.status.isSubmissionCanceled
+                  ? Text('Canceled')
+                  : Container(),
               ElevatedButton(
-                key: const Key('updateAccountMembershipForm_continue_raisedButton'),
-                child: const Text('Pay'),
+                key: const Key(
+                    'updateAccountMembershipForm_continue_raisedButton'),
+                child: const Text('Update'),
                 onPressed: state.status.isValidated
                     ? () async {
                         context

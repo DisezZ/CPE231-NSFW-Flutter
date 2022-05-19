@@ -38,7 +38,7 @@ class _BankNumberInput extends StatelessWidget {
               .add(UpdateBankNameBankNumberChanged(bankNumber)),
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
-            labelText: 'from atm number',
+            labelText: 'bank number',
             errorText: state.bankNumber.invalid ? 'invalid atm number' : null,
           ),
         );
@@ -60,7 +60,7 @@ class _BankNameInput extends StatelessWidget {
               .add(UpdateBankNameBankNameChanged(newName)),
           keyboardType: TextInputType.phone,
           decoration: InputDecoration(
-            labelText: 'branch number',
+            labelText: 'new bank name',
             errorText: state.newName.invalid ? 'invalid branch number' : null,
           ),
         );
@@ -87,7 +87,7 @@ class _UpdateBankNameButton extends StatelessWidget {
                   : Container(),
               ElevatedButton(
                 key: const Key('updateAtmBranchForm_continue_raisedButton'),
-                child: const Text('Pay'),
+                child: const Text('Update'),
                 onPressed: state.status.isValidated
                     ? () async {
                         context

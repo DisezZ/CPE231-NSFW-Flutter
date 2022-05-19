@@ -5,11 +5,14 @@ import '../../../../../data/repositories/simple_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../widgets/custom_app_bar.dart';
+
 class UpdateAccountMembershipScreen extends StatelessWidget {
   UpdateAccountMembershipScreen({Key? key}) : super(key: key);
 
-  static Route route() {
-    return MaterialPageRoute<void>(builder: (_) => UpdateAccountMembershipScreen());
+  static Function route() {
+    return () => MaterialPageRoute<void>(
+        builder: (_) => UpdateAccountMembershipScreen());
   }
 
   final _simpleRepository = SimpleRepository();
@@ -21,11 +24,12 @@ class UpdateAccountMembershipScreen extends StatelessWidget {
       child: BlocProvider(
         create: ((context) =>
             UpdateAccountMembershipBloc(simpleRepository: _simpleRepository)),
-        child: Scaffold(
-            appBar: AppBar(
-              leading: ElevatedButton(
-                onPressed: (() => Navigator.pop(context)),
-                child: Icon(Icons.arrow_back_ios_new),
+        child: const Scaffold(
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(60),
+              child: CustomAppBar(
+                back: true,
+                title: "Update Customer's Membership",
               ),
             ),
             body: UpdateAccountMembershipForm()),

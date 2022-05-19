@@ -60,8 +60,7 @@ class _AtmNumberInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<WithdrawBloc, WithdrawState>(
-      buildWhen: (previous, current) =>
-          previous.atmNumber != current.atmNumber,
+      buildWhen: (previous, current) => previous.atmNumber != current.atmNumber,
       builder: (context, state) {
         return TextField(
           key: const Key('withdrawForm_atmNumberInput_textField'),
@@ -70,9 +69,8 @@ class _AtmNumberInput extends StatelessWidget {
               .add(WithdrawAtmNumberChanged(toAccountNumber)),
           keyboardType: TextInputType.phone,
           decoration: InputDecoration(
-            labelText: 'atm number',
-            errorText:
-                state.atmNumber.invalid ? 'invalid atm number' : null,
+            labelText: 'at atm number',
+            errorText: state.atmNumber.invalid ? 'invalid atm number' : null,
           ),
         );
       },
@@ -114,10 +112,12 @@ class _WithdrawButton extends StatelessWidget {
             children: [
               state.status.isSubmissionSuccess ? Text('Success') : Container(),
               state.status.isSubmissionFailure ? Text('Failured') : Container(),
-              state.status.isSubmissionCanceled ? Text('Canceled') : Container(),
+              state.status.isSubmissionCanceled
+                  ? Text('Canceled')
+                  : Container(),
               ElevatedButton(
                 key: const Key('topupForm_continue_raisedButton'),
-                child: const Text('Withdraw'),
+                child: const Text('Withdraw now'),
                 onPressed: state.status.isValidated
                     ? () async {
                         context

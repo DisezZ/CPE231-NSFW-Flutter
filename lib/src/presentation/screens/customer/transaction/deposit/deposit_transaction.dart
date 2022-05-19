@@ -1,5 +1,6 @@
 import '../../../../../business_logic/blocs/transfer/bloc/transfer_bloc.dart';
 import '../../../../../data/repositories/transfer_repository.dart';
+import '../../../../widgets/custom_app_bar.dart';
 import '../transfer/widgets/transfer_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,8 +14,8 @@ import 'widgets/deposit_form.dart';
 class DepositTransaction extends StatelessWidget {
   DepositTransaction({Key? key}) : super(key: key);
 
-  static Route route() {
-    return MaterialPageRoute<void>(builder: (_) => DepositTransaction());
+  static Function route() {
+    return () => MaterialPageRoute<void>(builder: (_) => DepositTransaction());
   }
 
   final _atmRepository = AtmRepository();
@@ -25,11 +26,12 @@ class DepositTransaction extends StatelessWidget {
       value: _atmRepository,
       child: BlocProvider(
         create: ((context) => DepositBloc(atmRepository: _atmRepository)),
-        child: Scaffold(
-            appBar: AppBar(
-              leading: ElevatedButton(
-                onPressed: (() => Navigator.pop(context)),
-                child: Icon(Icons.arrow_back_ios_new),
+        child: const Scaffold(
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(60),
+              child: CustomAppBar(
+                back: true,
+                title: 'Deposit',
               ),
             ),
             body: DepositForm()),

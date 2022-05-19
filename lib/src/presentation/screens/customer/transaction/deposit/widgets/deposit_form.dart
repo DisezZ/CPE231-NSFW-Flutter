@@ -47,9 +47,8 @@ class _ToAccountNumberInput extends StatelessWidget {
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
             labelText: 'from account number',
-            errorText: state.toAccountNumber.invalid
-                ? 'invalid account number'
-                : null,
+            errorText:
+                state.toAccountNumber.invalid ? 'invalid account number' : null,
           ),
         );
       },
@@ -61,8 +60,7 @@ class _AtmNumberInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DepositBloc, DepositState>(
-      buildWhen: (previous, current) =>
-          previous.atmNumber != current.atmNumber,
+      buildWhen: (previous, current) => previous.atmNumber != current.atmNumber,
       builder: (context, state) {
         return TextField(
           key: const Key('depositForm_atmNumberInput_textField'),
@@ -71,9 +69,8 @@ class _AtmNumberInput extends StatelessWidget {
               .add(DepositAtmNumberChanged(toAccountNumber)),
           keyboardType: TextInputType.phone,
           decoration: InputDecoration(
-            labelText: 'atm number',
-            errorText:
-                state.atmNumber.invalid ? 'invalid atm number' : null,
+            labelText: 'at atm number',
+            errorText: state.atmNumber.invalid ? 'invalid atm number' : null,
           ),
         );
       },
@@ -115,10 +112,12 @@ class _DepositButton extends StatelessWidget {
             children: [
               state.status.isSubmissionSuccess ? Text('Success') : Container(),
               state.status.isSubmissionFailure ? Text('Failured') : Container(),
-              state.status.isSubmissionCanceled ? Text('Canceled') : Container(),
+              state.status.isSubmissionCanceled
+                  ? Text('Canceled')
+                  : Container(),
               ElevatedButton(
                 key: const Key('topupForm_continue_raisedButton'),
-                child: const Text('Deposit'),
+                child: const Text('Deposit now'),
                 onPressed: state.status.isValidated
                     ? () async {
                         context

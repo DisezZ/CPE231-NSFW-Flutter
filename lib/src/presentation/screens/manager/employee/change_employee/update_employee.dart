@@ -4,14 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../business_logic/blocs/update/atm_branch/bloc/update_atm_branch_bloc.dart';
 import '../../../../../data/repositories/simple_repository.dart';
+import '../../../../widgets/custom_app_bar.dart';
 import 'update_employee_form.dart';
 
 class UpdateEmployeeBranchScreen extends StatelessWidget {
   UpdateEmployeeBranchScreen({Key? key}) : super(key: key);
 
-  static Route route() {
-    return MaterialPageRoute<void>(
-        builder: (_) => UpdateEmployeeBranchScreen());
+  static Function route() {
+    return () =>
+        MaterialPageRoute<void>(builder: (_) => UpdateEmployeeBranchScreen());
   }
 
   final simpleRepository = SimpleRepository();
@@ -23,14 +24,15 @@ class UpdateEmployeeBranchScreen extends StatelessWidget {
       child: BlocProvider(
         create: ((context) =>
             UpdateEmployeeBranchBloc(simpleRepository: simpleRepository)),
-        child: Scaffold(
-            appBar: AppBar(
-              leading: ElevatedButton(
-                onPressed: (() => Navigator.pop(context)),
-                child: Icon(Icons.arrow_back_ios_new),
+        child: const Scaffold(
+            appBar: PreferredSize(
+              preferredSize: Size.fromHeight(60),
+              child: CustomAppBar(
+                back: true,
+                title: "Update Employee's Branch",
               ),
             ),
-            body: const UpdateEmployeeBranchForm()),
+            body: UpdateEmployeeBranchForm()),
       ),
     );
   }

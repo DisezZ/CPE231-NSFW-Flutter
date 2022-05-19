@@ -1,4 +1,5 @@
 import '../../../business_logic/blocs/authentication/bloc/authentication_bloc.dart';
+import '../../widgets/custom_app_bar.dart';
 import 'branch/employee_branch.dart';
 import 'customer/employee_customer.dart';
 import '../manager/bank/manager_bank.dart';
@@ -33,17 +34,12 @@ class _EmployeeScreenState extends State<EmployeeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          ElevatedButton(
-            child: const Text('Logout'),
-            onPressed: () {
-              context
-                  .read<AuthenticationBloc>()
-                  .add(AuthenticationLogoutRequested());
-            },
-          ),
-        ],
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: CustomAppBar(
+          back: false,
+          title: 'Employee',
+        ),
       ),
       body: _tabs[_index],
       bottomNavigationBar: BottomNavigationBar(

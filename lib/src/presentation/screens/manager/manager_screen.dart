@@ -1,3 +1,5 @@
+import 'package:cpe231_nsfw_flutter/src/presentation/widgets/custom_app_bar.dart';
+
 import '../../../business_logic/blocs/authentication/bloc/authentication_bloc.dart';
 import 'bank/manager_bank.dart';
 import 'employee/manager_employee.dart';
@@ -21,7 +23,7 @@ class _ManagerScreenState extends State<ManagerScreen> {
 
   final _tabs = [
     ManagerOverview(),
-    ManagerBank(),
+    const ManagerBank(),
     ManagerEmployee(),
     Container()
   ];
@@ -29,17 +31,12 @@ class _ManagerScreenState extends State<ManagerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          ElevatedButton(
-            child: const Text('Logout'),
-            onPressed: () {
-              context
-                  .read<AuthenticationBloc>()
-                  .add(AuthenticationLogoutRequested());
-            },
-          ),
-        ],
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: CustomAppBar(
+          back: false,
+          title: 'Manager',
+        ),
       ),
       body: _tabs[_index],
       bottomNavigationBar: BottomNavigationBar(

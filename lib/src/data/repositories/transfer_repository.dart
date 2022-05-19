@@ -27,7 +27,7 @@ class TransferRepository {
     print('hello');
     final res = await http.post(
         Uri.parse(
-            'https://shrouded-ocean-23479.herokuapp.com/api/Transfermoney/transferApi'),
+            currentEndpoint + '/api/Transfermoney/transferApi'),
         body: jsonEncode({
           "fromAccountId": int.parse(fromAccountNumber),
           "toAccountId": int.parse(toAccountNumber),
@@ -44,8 +44,4 @@ class TransferRepository {
     if (!apiRes.error) {}
     return apiRes;
   }
-
-  /*void test() {
-    print('test transfer repo');
-  }*/
 }

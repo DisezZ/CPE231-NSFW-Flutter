@@ -1,11 +1,7 @@
-
-
 import '../../../../../business_logic/blocs/update/atm_branch/bloc/update_atm_branch_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
-
-
 
 class UpdateAtmBranchForm extends StatelessWidget {
   const UpdateAtmBranchForm({Key? key}) : super(key: key);
@@ -31,8 +27,7 @@ class _AtmNumberInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UpdateAtmBranchBloc, UpdateAtmBranchState>(
-      buildWhen: (previous, current) =>
-          previous.atmNumber != current.atmNumber,
+      buildWhen: (previous, current) => previous.atmNumber != current.atmNumber,
       builder: (context, state) {
         return TextField(
           key: const Key('updateAtmBranchForm_atmNumberInput_textField'),
@@ -41,10 +36,8 @@ class _AtmNumberInput extends StatelessWidget {
               .add(UpdateAtmBranchAtmNumberChanged(atmNumber)),
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
-            labelText: 'from atm number',
-            errorText: state.atmNumber.invalid
-                ? 'invalid atm number'
-                : null,
+            labelText: 'atm number',
+            errorText: state.atmNumber.invalid ? 'invalid atm number' : null,
           ),
         );
       },
@@ -66,7 +59,7 @@ class _BranchNumberInput extends StatelessWidget {
               .add(UpdateAtmBranchBranchNumberChanged(branchNumber)),
           keyboardType: TextInputType.phone,
           decoration: InputDecoration(
-            labelText: 'branch number',
+            labelText: 'to branch number',
             errorText:
                 state.branchNumber.invalid ? 'invalid branch number' : null,
           ),
@@ -89,10 +82,12 @@ class _UpdateAtmBranchButton extends StatelessWidget {
             children: [
               state.status.isSubmissionSuccess ? Text('Success') : Container(),
               state.status.isSubmissionFailure ? Text('Failured') : Container(),
-              state.status.isSubmissionCanceled ? Text('Canceled') : Container(),
+              state.status.isSubmissionCanceled
+                  ? Text('Canceled')
+                  : Container(),
               ElevatedButton(
                 key: const Key('updateAtmBranchForm_continue_raisedButton'),
-                child: const Text('Pay'),
+                child: const Text('Update'),
                 onPressed: state.status.isValidated
                     ? () async {
                         context

@@ -1,3 +1,7 @@
+import 'package:cpe231_nsfw_flutter/src/presentation/widgets/title_with_custom_underlined.dart';
+
+import '../../../../constants/constants.dart';
+import '../../../widgets/option_card.dart';
 import 'topup/topup_transaction.dart';
 import 'transfer/transfer_transaction.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +21,62 @@ class CustomerTransaction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(
+            kDefaultPadding, kDefaultPadding, kDefaultPadding, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TitleWithCustomUnderlined(text: 'Transaction'),
+            SizedBox(height: kDefaultPadding),
+            Wrap(
+              runSpacing: kDefaultPadding,
+              spacing: kDefaultPadding,
+              children: [
+                OptionCard(
+                  title: 'Topup',
+                  icon: Icons.currency_exchange,
+                  route: TopupTransaction.route(),
+                ),
+                OptionCard(
+                  title: 'Transfer',
+                  icon: Icons.currency_exchange,
+                  route: TransferTransaction.route(),
+                ),
+                OptionCard(
+                  title: 'Billing',
+                  icon: Icons.currency_exchange,
+                  route: BillingTransaction.route(),
+                ),
+                OptionCard(
+                  title: 'Withdraw',
+                  icon: Icons.currency_exchange,
+                  route: WithdrawTransaction.route(),
+                ),
+                OptionCard(
+                  title: 'Deposit',
+                  icon: Icons.currency_exchange,
+                  route: DepositTransaction.route(),
+                ),
+                OptionCard(
+                  title: 'Loan',
+                  icon: Icons.currency_exchange,
+                  route: LoanTransaction.route(),
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+
+
+/*
+Column(
       children: [
         ElevatedButton(
             onPressed: () => Navigator.push(context, TopupTransaction.route()),
@@ -44,5 +103,4 @@ class CustomerTransaction extends StatelessWidget {
             child: const Text('Loan')),
       ],
     );
-  }
-}
+*/

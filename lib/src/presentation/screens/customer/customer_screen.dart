@@ -1,3 +1,4 @@
+import '../../widgets/custom_app_bar.dart';
 import 'overview/customer_overview.dart';
 import 'transaction/customer_transaction.dart';
 import 'wallet/customer_wallet.dart';
@@ -30,17 +31,12 @@ class _CustomerScreenState extends State<CustomerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          ElevatedButton(
-            child: const Text('Logout'),
-            onPressed: () {
-              context
-                  .read<AuthenticationBloc>()
-                  .add(AuthenticationLogoutRequested());
-            },
-          ),
-        ],
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(60),
+        child: CustomAppBar(
+          back: false,
+          title: 'Customer',
+        ),
       ),
       body: _tabs[_index],
       bottomNavigationBar: BottomNavigationBar(

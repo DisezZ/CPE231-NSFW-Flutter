@@ -93,10 +93,12 @@ class _BillingButton extends StatelessWidget {
             children: [
               state.status.isSubmissionSuccess ? Text('Success') : Container(),
               state.status.isSubmissionFailure ? Text('Failured') : Container(),
-              state.status.isSubmissionCanceled ? Text('Canceled') : Container(),
+              state.status.isSubmissionCanceled
+                  ? Text('Canceled')
+                  : Container(),
               ElevatedButton(
                 key: const Key('topupForm_continue_raisedButton'),
-                child: const Text('Pay'),
+                child: const Text('Pay Bill'),
                 onPressed: state.status.isValidated
                     ? () async {
                         context

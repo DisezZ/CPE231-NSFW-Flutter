@@ -120,7 +120,7 @@ class _TopupButton extends StatelessWidget {
                   : Container(),
               ElevatedButton(
                 key: const Key('topupForm_continue_raisedButton'),
-                child: const Text('Topup'),
+                child: const Text('Topup now'),
                 onPressed: state.status.isValidated
                     ? () async {
                         context.read<TopupBloc>().add(const TopupSubmitted());

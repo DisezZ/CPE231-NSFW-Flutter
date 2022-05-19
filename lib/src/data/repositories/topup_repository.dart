@@ -6,6 +6,8 @@ import 'package:cpe231_nsfw_flutter/src/data/models/topup_transaction.dart';
 import 'package:cpe231_nsfw_flutter/src/data/models/transaction.dart';
 import 'package:http/http.dart' as http;
 
+import '../../constants/api.dart';
+
 class TopupRepository {
   TopupTransaction? _topupTransaction;
 
@@ -18,7 +20,7 @@ class TopupRepository {
     print('hello');
     final res = await http.post(
         Uri.parse(
-            'https://shrouded-ocean-23479.herokuapp.com/api/Topup/mobile'),
+            currentEndpoint + '/api/Topup/mobile'),
         body: jsonEncode({
           "fromAccountId": int.parse(fromAccountNumber),
           "mobNumber": toMobileNumber,

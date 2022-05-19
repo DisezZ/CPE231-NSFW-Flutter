@@ -26,15 +26,14 @@ class AtmRepository {
     print(
         'withdraw: from ${int.parse(fromAccountNumber)} to ${int.parse(atmNumber)} with amount ${double.parse(amount)}');
     print('hello');
-    final res = await http.post(
-        Uri.parse(
-            'https://shrouded-ocean-23479.herokuapp.com/api/ATM/withdraw'),
-        body: jsonEncode({
-          "accountId": int.parse(fromAccountNumber),
-          "atmId": int.parse(atmNumber),
-          "withAmount": double.parse(amount),
-        }),
-        headers: {
+    final res =
+        await http.post(Uri.parse(currentEndpoint + '/api/ATM/withdraw'),
+            body: jsonEncode({
+              "accountId": int.parse(fromAccountNumber),
+              "atmId": int.parse(atmNumber),
+              "withAmount": double.parse(amount),
+            }),
+            headers: {
           "Content-Type": "application/json",
           "Authorization": '',
           "Accept": "application/json",
@@ -53,9 +52,7 @@ class AtmRepository {
     print(
         'transfer: from ${int.parse(toAccountNumber)} to ${int.parse(atmNumber)} with amount ${double.parse(amount)}');
     print('hello');
-    final res = await http.post(
-        Uri.parse(
-            'https://shrouded-ocean-23479.herokuapp.com/api/ATM/deposit'),
+    final res = await http.post(Uri.parse(currentEndpoint + '/api/ATM/deposit'),
         body: jsonEncode({
           "accountId": int.parse(toAccountNumber),
           "atmId": int.parse(atmNumber),

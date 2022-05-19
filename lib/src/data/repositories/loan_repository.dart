@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:cpe231_nsfw_flutter/src/data/models/transaction.dart';
 import 'package:http/http.dart' as http;
 
+import '../../constants/api.dart';
 import '../../presentation/screens/customer/transaction/loan/loan_transaction.dart';
 
 class LoanRepository {
@@ -17,7 +18,7 @@ class LoanRepository {
     print('hello');
     final res = await http.post(
         Uri.parse(
-            'https://shrouded-ocean-23479.herokuapp.com/api/Loan/create/loanContract'),
+            currentEndpoint + '/api/Loan/create/loanContract'),
         body: jsonEncode({
           "accountId": int.parse(forAccountNumber),
           "loanAmount": double.parse(amount),

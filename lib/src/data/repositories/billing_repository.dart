@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:cpe231_nsfw_flutter/src/data/models/transaction.dart';
 import 'package:http/http.dart' as http;
 
+import '../../constants/api.dart';
 import '../models/billingTransaction.dart';
 
 class BillingRepository {
@@ -18,7 +19,7 @@ class BillingRepository {
     print('hello');
     final res = await http.post(
         Uri.parse(
-            'https://shrouded-ocean-23479.herokuapp.com/api/BillingTransaction/paying/Billtransaction'),
+            currentEndpoint + '/api/BillingTransaction/paying/Billtransaction'),
         body: jsonEncode({
           "fromAccountId": int.parse(fromAccountNumber),
           "billId": billNumber,

@@ -27,7 +27,7 @@ class _AppViewState extends State<AppView> {
       title: 'cpe231_nsfw_flutter',
       theme: ThemeData(
         colorScheme: _customColorScheme(),
-        fontFamily: 'Georgia',
+        //fontFamily: 'Georgia',
         buttonTheme: ButtonThemeData(colorScheme: _customColorScheme()),
         cardTheme: CardTheme(color: kBackground),
         bottomNavigationBarTheme:

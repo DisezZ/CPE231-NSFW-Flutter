@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
@@ -39,8 +38,9 @@ class _EmployeeNumberInput extends StatelessWidget {
               .add(UpdateEmployeeBranchEmployeeNumberChanged(employeeNumber)),
           keyboardType: TextInputType.number,
           decoration: InputDecoration(
-            labelText: 'from atm number',
-            errorText: state.employeeNumber.invalid ? 'invalid atm number' : null,
+            labelText: 'employee number',
+            errorText:
+                state.employeeNumber.invalid ? 'invalid atm number' : null,
           ),
         );
       },
@@ -52,7 +52,8 @@ class _EmployeeBranchInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<UpdateEmployeeBranchBloc, UpdateEmployeeBranchState>(
-      buildWhen: (previous, current) => previous.branchNumber != current.branchNumber,
+      buildWhen: (previous, current) =>
+          previous.branchNumber != current.branchNumber,
       builder: (context, state) {
         return TextField(
           key: const Key('updateAtmBranchForm_branchNumberInput_textField'),
@@ -61,8 +62,9 @@ class _EmployeeBranchInput extends StatelessWidget {
               .add(UpdateEmployeeBranchBranchNumberChanged(branchNumber)),
           keyboardType: TextInputType.phone,
           decoration: InputDecoration(
-            labelText: 'branch number',
-            errorText: state.branchNumber.invalid ? 'invalid branch number' : null,
+            labelText: 'to branch number',
+            errorText:
+                state.branchNumber.invalid ? 'invalid branch number' : null,
           ),
         );
       },
@@ -88,7 +90,7 @@ class _UpdateEmployeeBranchButton extends StatelessWidget {
                   : Container(),
               ElevatedButton(
                 key: const Key('updateAtmBranchForm_continue_raisedButton'),
-                child: const Text('Pay'),
+                child: const Text('Update'),
                 onPressed: state.status.isValidated
                     ? () async {
                         context

@@ -116,7 +116,7 @@ class _PayLoanButton extends StatelessWidget {
                   : Container(),
               ElevatedButton(
                 key: const Key('payLoanForm_continue_raisedButton'),
-                child: const Text('Pay'),
+                child: const Text('Pay now'),
                 onPressed: state.status.isValidated
                     ? () async {
                         context
